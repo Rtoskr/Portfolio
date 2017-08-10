@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -31,12 +32,13 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        <div class="pull-right">
+            <span class="small">Page Loaded in @Html.Raw(Globals.RequestTimer.ElapsedMilliseconds + "ms")</span>
+        </div>
         <footer>
             <p>&copy; @DateTime.Now.Year - Carter, Eddie A.</p>
             <p>Stock images provided courtesy of <a href="https://www.pexels.com" target="_blank">Pexels</a>.</p>
         </footer>
     </div>
-
-
 </body>
 </html>
