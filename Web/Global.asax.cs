@@ -13,9 +13,11 @@ namespace Web
 {
     public static class Globals
     {
+        // This stopwatch is used for measuring time in ms that each page load takes.
         public static Stopwatch RequestTimer = new Stopwatch();
     }
-    public class MvcApplication : System.Web.HttpApplication
+
+    public class MvcApplication : HttpApplication
     {
         protected void Application_BeginRequest()
         {

@@ -179,6 +179,7 @@
     <Content Include="Content\Images\datacenter.jpeg" />
     <Content Include="Content\Images\office_space.jpeg" />
     <Content Include="Content\Images\windows.jpeg" />
+    <Content Include="Content\Images\xbox.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
