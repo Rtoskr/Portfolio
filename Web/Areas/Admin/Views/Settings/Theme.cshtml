@@ -1,0 +1,35 @@
+﻿@using System.Configuration
+@{
+    ViewBag.Title = "Theme Selection";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="http://csharpindepth.com/codestyles.css" />
+
+<div class="container">
+    @using(Html.BeginForm("SaveTheme","Settings",FormMethod.Post))                 
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal col-lg-4 col-lg-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Choose a Theme
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-9" style="padding-right:0px;">
+                            <select class="form-control" id="bootstrapTheme" name="bootstrapTheme" style="width:100%;">
+                                @foreach (var theme in Directory.GetFiles(Server.MapPath("~/Content/")).Where(x => x.Contains("bootstrap.") && x.EndsWith(".css") && !x.Contains(".min.")).Select(x => new FileInfo(x)))
+                                {
+                                    <option value="@theme.Name" @Html.Raw(theme.Name == ConfigurationManager.AppSettings["bootstrapTheme"] ? "selected" : string.Empty)>@theme.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-xs-3" style="padding-left:4px;">
+                            <input type="submit" value="Save" onclick="javascript: $(this).prop('disabled', true); document.forms[0].submit();" class="btn btn-success btn-block" />
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    }
+</div>

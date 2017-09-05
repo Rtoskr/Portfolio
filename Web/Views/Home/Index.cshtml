@@ -1,38 +1,5 @@
-﻿@{
+﻿@using System.Configuration
+@{
     ViewBag.Title = "Home";
+    ViewBag.Message = ConfigurationManager.AppSettings["_Headline"];
 }
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Certifications</h4>
-                </div>
-                <div class="panel-body text-left">
-                    <ul>
-                        <li>
-                            Microsoft&copy; Certified Professional
-                        </li>
-                        <li>
-                            MTA - Software Development
-                            <span class="pull-right"><a href="https://www.youracclaim.com/badges/bf80c8ab-236c-4cb8-884c-db93788aa4cc" target="_blank">View</a></span>
-                        </li>
-                        <li>
-                            MTA - Database
-                            <span class="pull-right"><a href="https://www.youracclaim.com/badges/eec37ac5-6505-47c3-ad7f-6ccb2673e76e" target="_blank">View</a></span>
-                        </li>
-                        <li>
-                            MCSA - Web Applications
-                            <span class="pull-right"><a href="https://www.youracclaim.com/badges/825635e0-235b-449e-8009-2949896d04bb" target="_blank">View</a></span>
-                        </li>
-                        <li>
-                            MCSD - App Builder
-                            <span class="pull-right">In Progress</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

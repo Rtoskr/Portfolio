@@ -1,0 +1,53 @@
+﻿@using System.Configuration
+@using System.Text.RegularExpressions
+@{
+    ViewBag.Title = "Site Configuration";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    @using (Ajax.BeginForm("SaveSettings", "Settings", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ajaxSaveResult" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <h3 class="col-lg-offset-2">Personalization</h3>
+        <hr class="col-lg-offset-2 col-lg-6" />
+
+        foreach (var setting in ConfigurationManager.AppSettings.AllKeys.Where(x => x.StartsWith("+")))
+        {
+            <div class="row" style="padding-top:8px;">
+                <div class="col-lg-2 col-lg-offset-2">
+                    <label for="@setting" class="control-label">@string.Join(" ", Regex.Split(setting, @"(?<!^)(?=[A-Z](?![A-Z]|$))")).Replace("_", string.Empty)</label>
+                </div>
+                <div class="col-lg-4">
+                    @Html.TextBox(setting, ConfigurationManager.AppSettings[setting], new { @class = "form-control", style = "width:100%;" })
+                </div>
+            </div>
+        }
+
+        <h3 class="col-lg-offset-2">Descriptions</h3>
+        <hr class="col-lg-offset-2 col-lg-6" />
+
+        foreach (var setting in ConfigurationManager.AppSettings.AllKeys.Where(x => x.StartsWith("_")).ToList())
+        {
+            <div class="row" style="padding-top:8px;">
+                <div class="col-lg-2 col-lg-offset-2">
+                    <label for="@setting" class="control-label">@string.Join(" ", Regex.Split(setting, @"(?<!^)(?=[A-Z](?![A-Z]|$))")).Replace("_", string.Empty)</label>
+                </div>
+                <div class="col-lg-4">
+                    @Html.TextArea(setting, ConfigurationManager.AppSettings[setting], new { @class = "form-control", rows = "6", style = "width:100%;" })
+                </div>
+            </div>
+        }
+
+        <div class="form-inline">
+            <div class="col-lg-4 col-lg-offset-4" style="padding:10px;">
+                <input type="submit" value="Save Settings" class="btn btn-success" />
+                <div id="ajaxSaveResult"><!-- Result of AJAX call here. --></div>
+            </div>
+        </div>
+
+    }
+</div>
+

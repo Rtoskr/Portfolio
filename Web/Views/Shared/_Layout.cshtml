@@ -1,4 +1,4 @@
-﻿
+﻿@using System.Configuration
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +27,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="@Url.Action("Index","Home")" style="padding:0px;">
-                    <img src="~/Content/Images/eddie.jpg" class="img-circle" style="display: inline-block;height: inherit; width: inherit; padding: 4px;"/>
-                    <span style="display: inline-block;height: inherit; width: inherit; padding: 0px;">Eddie Carter</span>
+                    <img src="~/Content/Images/logo.png" class="img-circle" style="display: inline-block;height: inherit; width: inherit; padding: 4px;"/>
+                    <span style="display: inline-block;height: inherit; width: inherit; padding: 0px;">@ConfigurationManager.AppSettings["+DisplayName"]</span>
                 </a>    
             </div>
             
@@ -45,15 +45,7 @@
                             <li>@Html.ActionLink("Resume", "Resume", "Home")</li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="glyphicon glyphicon-tasks"></span>&nbsp;Code Examples
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Bootstrap Theme Changer","ThemeChanger","Examples")</li>
-                        </ul>
-                    </li>
+                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -77,7 +69,7 @@
             <span class="small">Page Loaded in @Html.Raw(Globals.RequestTimer.ElapsedMilliseconds + "ms")</span>
         </div>
         <footer>
-            <p>&copy; @DateTime.Now.Year - Carter, Eddie A.</p>
+            <p>&copy; @DateTime.Now.Year - @ConfigurationManager.AppSettings["+CopyrightMessage"]</p>
         </footer>
     </div>
 </body>

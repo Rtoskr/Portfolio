@@ -1,4 +1,4 @@
-﻿
+﻿@using System.Configuration
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,11 +32,12 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="glyphicon glyphicon-user"></span>&nbsp;Users
+                            <span class="glyphicon glyphicon-cog"></span>&nbsp;Settings
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("User Administration", "Index","Users")</li>
+                            <li>@Html.ActionLink("Theme Selection","Theme","Settings")</li>
+                            <li>@Html.ActionLink("Configuration", "Configuration", "Settings")</li>
                         </ul>
                     </li>
                 </ul>
@@ -58,7 +59,7 @@
             <span class="small">Page Loaded in @Html.Raw(Globals.RequestTimer.ElapsedMilliseconds + "ms")</span>
         </div>
         <footer>
-            <p>&copy; @DateTime.Now.Year - Carter, Eddie A.</p>
+            <p>&copy; @DateTime.Now.Year - @ConfigurationManager.AppSettings["+CopyrightMessage"]</p>
         </footer>
     </div>
 </body>
