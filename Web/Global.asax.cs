@@ -15,6 +15,7 @@ namespace Web
     {
         // This stopwatch is used for measuring time in ms that each page load takes.
         public static Stopwatch RequestTimer = new Stopwatch();
+
     }
 
     public class MvcApplication : HttpApplication

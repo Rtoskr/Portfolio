@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Resume";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var expertiseAreas = new string[] {
+        "Database Connectivity",
+        "Automated Data Manipulation",
+        "Desktop Application Development",
+        "Task Automation",
+        "Software Debugging",
+        "RESTful API Development",
+        "Database Design and Tuning",
+        "Model/View/Controller Design"
+    };
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Profile</h3>
+            <div class="text">I'm an experienced .NET developer with a background in Web Development, Database Administration, and Automation.</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Areas of Expertise</h3>
+            @for (int i = 0;i < expertiseAreas.Count();i += 4)
+            {
+                <div class="row">
+                    @for(int b = i;b < i + 4;b++)
+                    {
+                        <div class="col-lg-3 list-group-item" style="padding:8px;">
+                            @if(b < expertiseAreas.Count())
+                            {
+                                <span class="glyphicon glyphicon-check">&nbsp;</span>@expertiseAreas[b]
+                            }
+                        </div>
+                    }
+                </div>
+                
+            }
+        </div>
+    </div>
+</div>
