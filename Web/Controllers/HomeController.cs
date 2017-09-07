@@ -1,16 +1,22 @@
-﻿using StackExchange.Profiling;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Globalization;
 using System.Linq;
-using System.Threading;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
+using Microsoft.Owin;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Web.Models;
+
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        
+
         public ActionResult Index()
         {
             return View();
@@ -19,6 +25,7 @@ namespace Web.Controllers
         public ActionResult Contact()
         {
             return View();
+            
         }
 
         public ActionResult Resume()
