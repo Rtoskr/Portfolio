@@ -4,13 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
-using Microsoft.Owin;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Web.Models;
-
 
 namespace Web.Controllers
 {
@@ -24,8 +18,7 @@ namespace Web.Controllers
 
         public ActionResult Contact()
         {
-            return View();
-            
+            return View();    
         }
 
         public ActionResult Resume()

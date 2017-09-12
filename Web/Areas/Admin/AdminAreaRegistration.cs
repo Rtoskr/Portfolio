@@ -15,9 +15,9 @@ namespace Web.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Administration",
-                "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                name: "Administration",
+                url: "Admin/{controller}/{action}/{id}",
+                defaults: new { area = "Admin", controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "Web.Areas.Admin.Controllers" }
             );
         }

@@ -89,8 +89,7 @@ namespace Web.Areas.Admin.Controllers
             // Refresh the running config.
             ConfigurationManager.RefreshSection("appSettings");
 
-
-            return Content(Bootstrap.MakeAlert(BootstrapAlert.success, "Settings saved successfully."), "text/html");
+            return Content("Settings saved at " + DateTime.Now.AddHours(-4).ToShortTimeString() + ".", "text/html");
         }
     }
 }

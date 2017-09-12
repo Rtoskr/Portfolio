@@ -11,7 +11,7 @@ namespace Web.Common
         public static string MakeAlert(BootstrapAlert alertType, string Message)
         {
             var sb = new StringBuilder();
-            sb.AppendFormat("<div class=\"alert alert-{0} alert-dismissable fade in\">\n", alertType.ToString());
+            sb.AppendFormat("<div style='padding-top:4px;padding-bottom:4px;' class=\"alert alert-{0} alert-dismissable fade in\">\n", alertType.ToString());
             sb.AppendLine("\t<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>");
             sb.AppendLine("\t" + Message);
             sb.AppendLine("</div>");
@@ -22,7 +22,7 @@ namespace Web.Common
         {
             var sb = new StringBuilder();
             sb.AppendLine("<div class=\"progress\">");
-            sb.AppendFormat("\t<div class='progress-bar {0} {2} {3}' role='progressbar' aria-valuenow='{1}' aria-valuemin='0' aria-valuemax='100' style='width:{1}%'>\n",
+            sb.AppendFormat("\t<div class='progress-bar {0} {2} {3}'  role='progressbar' aria-valuenow='{1}' aria-valuemin='0' aria-valuemax='100' style='width:{1}%'>\n",
                 utilizationColor == true ? GetProgressType(percentage) : "progress-bar-info",
                 percentage,
                 striped == true ? "progress-bar-striped" : string.Empty,

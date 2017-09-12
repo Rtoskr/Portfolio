@@ -1,0 +1,34 @@
+﻿@using Web.Common
+@{
+    ViewBag.Title = "Admin Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="col-lg-4 col-lg-offset-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="text-primary">Please login to the Admin Portal</span>
+            </div>
+            <div class="panel-body text-center">
+                @using (Html.BeginForm("DoAuth", "Home", FormMethod.Post, new { @class = "form-inline" }))
+                {
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <input type="password" id="txtPassword" name="adminPassword" class="form-control" />
+                        <input type="hidden" name="redirectRoute" value="@Request.QueryString["route"]" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                    if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                    {
+                        @Bootstrap.MakeAlert(BootstrapAlert.danger, ViewBag.ErrorMessage)
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
