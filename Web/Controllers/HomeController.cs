@@ -5,11 +5,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Web.Migrations;
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
+        private SiteDBContext SiteDB = new SiteDBContext();
 
         public ActionResult Index()
         {
@@ -23,7 +25,7 @@ namespace Web.Controllers
 
         public ActionResult Resume()
         {
-            return View();
+            return View(SiteDB.Resumes.FirstOrDefault());
         }
     }
 }
