@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @RenderSection("scripts", required: false)
+
 </head>
 <body>
     <div class="jumbotron">
@@ -38,7 +45,6 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Contact Me", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Resume", "Resume", "Home")</li>
                         </ul>
                     </li>
                     
@@ -60,12 +66,6 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
         <hr />
         <div class="pull-right">
             <span class="small">Page Loaded in @Html.Raw(Globals.RequestTimer.ElapsedMilliseconds + "ms")</span>

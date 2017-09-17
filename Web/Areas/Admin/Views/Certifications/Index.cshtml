@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Web.Models.Certification>
+
+@{
+    ViewBag.Title = "Certification List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 text-center" style="padding-bottom:4px;">
+            @Html.ActionLink("Add New", "Create", new { area = "Admin" }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">  
+            <table class="table table-responsive table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th><span class="glyphicon glyphicon-wrench"></span>&nbsp;Tools</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td style="width: 140px;">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm", style = "width:60px;" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm", style = "width:60px;" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

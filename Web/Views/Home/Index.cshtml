@@ -1,5 +1,76 @@
-﻿@using System.Configuration
+﻿@model Web.Models.Resume
+@using System.Configuration
 @{
-    ViewBag.Title = "Home";
-    ViewBag.Message = ConfigurationManager.AppSettings["_Headline"];
+    ViewBag.Title = ConfigurationManager.AppSettings["+DisplayName"];
+    ViewBag.Message = Model.Headline;
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <img class="img-circle img-responsive" style="width:inherit;height:inherit;" src="~/Content/Images/logo.png" />
+            <br />
+            <h3>@ConfigurationManager.AppSettings["+CurrentTitle"]</h3>
+        </div>
+        <div class="col-lg-4 col-lg-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-user">&nbsp;</span><span class="text-primary">Contact Information</span>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <ul>
+                            <li><span class="glyphicon glyphicon-envelope">&nbsp;</span><a href="mailto:@ConfigurationManager.AppSettings["+EmailAddress"]">@ConfigurationManager.AppSettings["+EmailAddress"]</a></li>
+                            <li><span class="fa fa-linkedin"></span>&emsp;&nbsp;<a href="@ConfigurationManager.AppSettings["+LinkedinUrl"]" target="_blank">@ConfigurationManager.AppSettings["+LinkedinUrl"].ToString().Split('/').Where(x => !string.IsNullOrEmpty(x)).Last()</a></li>
+                            <li><span class="glyphicon glyphicon-globe">&nbsp;</span>@ConfigurationManager.AppSettings["+Location"]</li>
+                            <li><span class="glyphicon glyphicon-phone">&nbsp;</span>@ConfigurationManager.AppSettings["+Telephone"]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="text-primary">Skills</h5>
+                </div>
+                <div class="panel-body">
+                    @for (int i = 0; i < Model.Skills.Count; i+=3)
+                    {
+                        for (int b = i; b < i + 3 && b < Model.Skills.Count; b++)
+                        {
+                            <div class="col-sm-4">
+                                <span class="glyphicon glyphicon-wrench"></span>&nbsp;@Model.Skills[b].Name
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="text-primary">Certifications</h5>
+                </div>
+                <div class="panel-body">
+                    @foreach (var certItem in Model.Certifications)
+                    {
+                        <div class="col-sm-6">
+                            @certItem.Name
+                        </div>
+                        <div class="col-sm-3">
+                            @certItem.Issuer
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="glyphicon glyphicon-link"></span>&nbsp;<a href="@certItem.LinkUrl" target="_blank">Certificate</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

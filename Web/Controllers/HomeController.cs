@@ -15,17 +15,12 @@ namespace Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(SiteDB.Resumes.FirstOrDefault());
         }
 
         public ActionResult Contact()
         {
             return View();    
-        }
-
-        public ActionResult Resume()
-        {
-            return View(SiteDB.Resumes.FirstOrDefault());
         }
     }
 }

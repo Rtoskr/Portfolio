@@ -171,8 +171,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CertificationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SkillsController.cs" />
     <Compile Include="Common\Bootstrap.cs" />
     <Compile Include="Controllers\ExamplesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -230,8 +232,11 @@
     <Content Include="Content\bootstrap.united.min.css" />
     <Content Include="Content\bootstrap.yeti.css" />
     <Content Include="Content\bootstrap.yeti.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -251,6 +256,21 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Settings\Configuration.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Views\Certifications\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Certifications\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Certifications\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Certifications\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Certifications\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Skills\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Skills\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Skills\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Skills\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Skills\Index.cshtml" />
     <None Include="Properties\PublishProfiles\EddieCarter - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -282,10 +302,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Settings\Theme.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Resume.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
