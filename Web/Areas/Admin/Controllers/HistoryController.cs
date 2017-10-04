@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -12,109 +11,108 @@ using Web.Models;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class CertificationsController : Controller
+    public class HistoryController : Controller
     {
         private SiteDBContext db = new SiteDBContext();
 
-        // GET: Admin/Certifications
-        public async Task<ActionResult> Index()
+        // GET: Admin/History
+        public ActionResult Index()
         {
-
-            return View(await db.Certifications.ToListAsync());
+            return View(db.WorkHistoryList.ToList());
         }
 
-        // GET: Admin/Certifications/Details/5
-        public async Task<ActionResult> Details(int? id)
+        // GET: Admin/History/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Certification certification = await db.Certifications.FindAsync(id);
-            if (certification == null)
+            WorkHistory workHistory = db.WorkHistoryList.Find(id);
+            if (workHistory == null)
             {
                 return HttpNotFound();
             }
-            return View(certification);
+            return View(workHistory);
         }
 
-        // GET: Admin/Certifications/Create
+        // GET: Admin/History/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Certifications/Create
+        // POST: Admin/History/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Issuer,LinkUrl")] Certification certification)
+        public ActionResult Create([Bind(Include = "Id,Employer,Title,StartDate,EndDate,Description")] WorkHistory workHistory)
         {
             if (ModelState.IsValid)
             {
-                db.Resumes.FirstOrDefault().Certifications.Add(certification);
-                await db.SaveChangesAsync();
+                db.Resumes.FirstOrDefault().WorkHistoryList.Add(workHistory);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(certification);
+            return View(workHistory);
         }
 
-        // GET: Admin/Certifications/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        // GET: Admin/History/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Certification certification = await db.Certifications.FindAsync(id);
-            if (certification == null)
+            WorkHistory workHistory = db.WorkHistoryList.Find(id);
+            if (workHistory == null)
             {
                 return HttpNotFound();
             }
-            return View(certification);
+            return View(workHistory);
         }
 
-        // POST: Admin/Certifications/Edit/5
+        // POST: Admin/History/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Issuer,LinkUrl")] Certification certification)
+        public ActionResult Edit([Bind(Include = "Id,Employer,Title,StartDate,EndDate,Description")] WorkHistory workHistory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(certification).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.Entry(workHistory).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(certification);
+            return View(workHistory);
         }
 
-        // GET: Admin/Certifications/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        // GET: Admin/History/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Certification certification = await db.Certifications.FindAsync(id);
-            if (certification == null)
+            WorkHistory workHistory = db.WorkHistoryList.Find(id);
+            if (workHistory == null)
             {
                 return HttpNotFound();
             }
-            return View(certification);
+            return View(workHistory);
         }
 
-        // POST: Admin/Certifications/Delete/5
+        // POST: Admin/History/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Certification certification = await db.Certifications.FindAsync(id);
-            db.Certifications.Remove(certification);
-            await db.SaveChangesAsync();
+            WorkHistory workHistory = db.WorkHistoryList.Find(id);
+            db.WorkHistoryList.Remove(workHistory);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
